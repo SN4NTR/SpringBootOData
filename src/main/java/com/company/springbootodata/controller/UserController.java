@@ -1,7 +1,6 @@
 package com.company.springbootodata.controller;
 
 import com.company.springbootodata.entity.User;
-import com.company.springbootodata.repository.UserRepository;
 import com.company.springbootodata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
