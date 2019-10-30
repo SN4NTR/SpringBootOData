@@ -1,6 +1,6 @@
 package com.company.springbootodata.service;
 
-import com.company.springbootodata.entity.Role;
+import com.company.springbootodata.entity.constant.Role;
 import com.company.springbootodata.entity.User;
 import com.company.springbootodata.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

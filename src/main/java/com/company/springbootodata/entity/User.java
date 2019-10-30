@@ -1,5 +1,6 @@
 package com.company.springbootodata.entity;
 
+import com.company.springbootodata.entity.constant.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
