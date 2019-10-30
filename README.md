@@ -13,6 +13,12 @@ Pre-requisites
 * Java 8 or later
 * IDE (IntelliJ IDEA, Eclipse)
 
+Used Technologies
+---
+
+* Spring Boot 2.2.0
+* Olingo v2.0
+
 Local Deployment
 -------
 
@@ -31,5 +37,5 @@ mvn clean install
 * Start Spring Boot application:
 
 ```
-mvnw spring-boot:run
+./mvnw spring-boot:run
 ```
