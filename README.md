@@ -34,7 +34,19 @@ git clone https://github.com/SN4NTR/SpringBootOData
 mvn clean install
 ```
 
+If Maven is not installed:
+
+```
+./mvnw clean install
+```
+
 * Start Spring Boot application:
+
+```
+mvn spring-boot:run
+```
+
+If Maven is not installed:
 
 ```
 ./mvnw spring-boot:run
