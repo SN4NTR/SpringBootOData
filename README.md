@@ -1,30 +1,20 @@
-# Spring Boot 2 + OData 2
+# Spring Boot 2 + OData 2 Application
 
-### Description
-Main entity of the application is User, which consists of following fields:
+Description
+---
 
-* ID
-* First name
-* Last name
-* Date of creation
-* Role
+Main entity is `User`. The application gives opportunity to create, read, update and delete (CRUD) users.
+The `H2` database is used for local storing `User`'s information.
 
-The application gives opportunity to create, read, update and delete (CRUD) users.
+Pre-requisites
+---
 
-### Database
-H2 is used as database for local deployment.
-
-### REST
-
-* `GET` `/users` - return all users
-* `GET` `/users/{id}` - return user by ID
-* `POST` `/users` - create new user
-* `PUT` `/users/{id}` - update user by ID
-* `DELETE` `/users/{id}` - delete user by ID
+* Maven 3.6.2 or later
+* Java 8 or later
+* IDE (IntelliJ IDEA, Eclipse)
 
 Local Deployment
 -------
-### Steps
 
 * Clone git repository:
 
@@ -32,15 +22,14 @@ Local Deployment
 git clone https://github.com/SN4NTR/SpringBootOData
 ```
 
-* Open project package in cmd and execute the following command:
+* Open project package in command line and build it with Maven:
 
 ```
 mvn clean install
 ```
 
-* Start Spring Boot application
-* Request:
+* Start Spring Boot application:
 
-`GET` `http://localhost:8080/users`
-
-We will see all users in database.
+```
+mvnw spring-boot:run
+```
