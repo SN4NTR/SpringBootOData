@@ -1,9 +1,6 @@
-package com.company.springbootodata.entity;
+package com.company.springbootodata.model;
 
-import com.company.springbootodata.entity.constant.Role;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,9 +16,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "USERS")
-@NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "users")
 public class User {
 
     @Id
@@ -29,17 +24,17 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name", length = 64, nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", length = 64, nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", length = 64, nullable = false)
+    @Column(name = "role")
     private Role role;
 }
