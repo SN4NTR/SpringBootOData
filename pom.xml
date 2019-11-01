@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <olingo.version>2.0.11</olingo.version>
     </properties>
 
     <dependencies>
@@ -39,12 +40,41 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.2.0.RELEASE</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-spring-service-connector</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.sap.hana.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-cloudfoundry-hana-service-connector</artifactId>-->
+<!--            <version>1.0.4.RELEASE</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <groupId>com.sap.hana.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-hana-service-connector</artifactId>
+            <version>1.0.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sap.cloud.db.jdbc</groupId>
+            <artifactId>ngdbc</artifactId>
+            <version>2.4.64</version>
+            <type>pom</type>
+            <scope>test</scope>
         </dependency>
 
         <!-- Lombok -->
@@ -64,35 +94,64 @@
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-api</artifactId>
-            <version>2.0.11</version>
+            <version>${olingo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-core</artifactId>
-            <version>2.0.11</version>
+            <version>${olingo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-jpa-processor-api</artifactId>
-            <version>2.0.11</version>
+            <version>${olingo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-jpa-processor-core</artifactId>
-            <version>2.0.11</version>
+            <version>${olingo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-api-annotation</artifactId>
-            <version>2.0.11</version>
+            <version>${olingo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-annotation-processor-core</artifactId>
-            <version>2.0.11</version>
+            <version>${olingo.version}</version>
         </dependency>
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>cf</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <activatedProperties>cf</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
