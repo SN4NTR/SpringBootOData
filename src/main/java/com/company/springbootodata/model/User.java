@@ -20,21 +20,24 @@ import java.util.Date;
 public class User {
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name")
+    @Column
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column
     private String lastName;
 
+    @Column
     @Temporal(TemporalType.DATE)
-    @Column(name = "created_at")
     private Date createdAt;
 
+    @Column
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
     private Role role;
+
+    @Column(name = "is_deleted")
+    private boolean deleted;
 }

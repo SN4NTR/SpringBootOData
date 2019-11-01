@@ -25,11 +25,10 @@ import java.io.IOException;
 @ApplicationPath("/odata")
 public class JerseyConfig extends ResourceConfig {
 
-    public JerseyConfig(UsersODataJPAServiceFactory serviceFactory, EntityManagerFactory emf) {
+    public JerseyConfig(UsersODataJPAServiceFactory serviceFactory, EntityManagerFactory entityManagerFactory) {
+        ODataApplication application = new ODataApplication();
 
-        ODataApplication app = new ODataApplication();
-
-        app.getClasses()
+        application.getClasses()
                 .forEach(c -> {
                     if (!ODataRootLocator.class.isAssignableFrom(c)) {
                         register(c);
@@ -37,7 +36,7 @@ public class JerseyConfig extends ResourceConfig {
                 });
 
         register(new UsersRootLocator(serviceFactory));
-        register(new EntityManagerFilter(emf));
+        register(new EntityManagerFilter(entityManagerFactory));
     }
 
     @Provider
@@ -45,41 +44,40 @@ public class JerseyConfig extends ResourceConfig {
 
         public static final String EM_REQUEST_ATTRIBUTE = EntityManagerFilter.class.getName() + "_ENTITY_MANAGER";
 
-        private final EntityManagerFactory emf;
+        private final EntityManagerFactory entityManagerFactory;
 
         @Context
         private HttpServletRequest httpRequest;
 
-        public EntityManagerFilter(EntityManagerFactory emf) {
-            this.emf = emf;
+        EntityManagerFilter(EntityManagerFactory entityManagerFactory) {
+            this.entityManagerFactory = entityManagerFactory;
         }
 
         @Override
         public void filter(ContainerRequestContext ctx) throws IOException {
-            EntityManager em = this.emf.createEntityManager();
-            httpRequest.setAttribute(EM_REQUEST_ATTRIBUTE, em);
+            EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+            httpRequest.setAttribute(EM_REQUEST_ATTRIBUTE, entityManager);
 
             if (!"GET".equalsIgnoreCase(ctx.getMethod())) {
-                em.getTransaction()
-                        .begin();
+                entityManager.getTransaction().begin();
             }
         }
 
         @Override
         public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
-
-            EntityManager em = (EntityManager) httpRequest.getAttribute(EM_REQUEST_ATTRIBUTE);
+            EntityManager entityManager = (EntityManager) httpRequest.getAttribute(EM_REQUEST_ATTRIBUTE);
 
             if (!"GET".equalsIgnoreCase(requestContext.getMethod())) {
-                EntityTransaction t = em.getTransaction();
-                if (t.isActive()) {
-                    if (!t.getRollbackOnly()) {
-                        t.commit();
+                EntityTransaction transaction = entityManager.getTransaction();
+
+                if (transaction.isActive()) {
+                    if (!transaction.getRollbackOnly()) {
+                        transaction.commit();
                     }
                 }
             }
 
-            em.close();
+            entityManager.close();
         }
     }
 
@@ -88,7 +86,7 @@ public class JerseyConfig extends ResourceConfig {
 
         private UsersODataJPAServiceFactory serviceFactory;
 
-        public UsersRootLocator(UsersODataJPAServiceFactory serviceFactory) {
+        UsersRootLocator(UsersODataJPAServiceFactory serviceFactory) {
             this.serviceFactory = serviceFactory;
         }
 
