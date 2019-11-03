@@ -18,9 +18,10 @@ public class CloudDatabaseConfig extends AbstractCloudConfig {
     public DataSource dataSource(@Value("${hana.url}") final String url,
                                  @Value("${hana.user}") final String user,
                                  @Value("${hana.password}") final String password) {
+
         return DataSourceBuilder.create()
                 .type(HikariDataSource.class)
-                .driverClassName(com.sap.hana.cloud.hcp.cf.service.relational.HANADataSourceCreator.class.getName())
+                .driverClassName(com.sap.db.jdbc.Driver.class.getName())
                 .url(url)
                 .username(user)
                 .password(password)
