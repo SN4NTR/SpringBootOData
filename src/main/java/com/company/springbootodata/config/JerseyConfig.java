@@ -26,15 +26,6 @@ import java.io.IOException;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig(UsersODataJPAServiceFactory serviceFactory, EntityManagerFactory entityManagerFactory) {
-        ODataApplication application = new ODataApplication();
-
-        application.getClasses()
-                .forEach(c -> {
-                    if (!ODataRootLocator.class.isAssignableFrom(c)) {
-                        register(c);
-                    }
-                });
-
         register(new UsersRootLocator(serviceFactory));
         register(new EntityManagerFilter(entityManagerFactory));
     }

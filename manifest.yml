@@ -3,3 +3,4 @@ applications:
     memory: 1024M
     path: target/springbootodata-0.0.1-SNAPSHOT.jar
     buildpack: java_buildpack
+  - service: hana_db
