@@ -3,7 +3,6 @@ package com.company.springbootodata.config;
 import com.company.springbootodata.service.UsersODataJPAServiceFactory;
 import org.apache.olingo.odata2.api.ODataServiceFactory;
 import org.apache.olingo.odata2.core.rest.ODataRootLocator;
-import org.apache.olingo.odata2.core.rest.app.ODataApplication;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 

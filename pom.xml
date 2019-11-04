@@ -62,6 +62,11 @@
             <artifactId>ngdbc</artifactId>
             <version>${sap.cloud.db.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- Lombok -->
         <dependency>
@@ -126,32 +131,6 @@
         </dependency>
 
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <activatedProperties>local</activatedProperties>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>cf</id>
-            <properties>
-                <activatedProperties>cf</activatedProperties>
-            </properties>
-        </profile>
-    </profiles>
 
     <build>
         <plugins>

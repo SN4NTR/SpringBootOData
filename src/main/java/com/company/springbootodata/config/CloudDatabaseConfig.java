@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
 import javax.sql.DataSource;
 
 @Configuration
-@Profile("cf")
+@Profile("cloud")
 public class CloudDatabaseConfig extends AbstractCloudConfig {
 
     @Bean
