@@ -45,7 +45,7 @@ public class JerseyConfig extends ResourceConfig {
 
         @Override
         public void filter(ContainerRequestContext ctx) throws IOException {
-            EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
             httpRequest.setAttribute(EM_REQUEST_ATTRIBUTE, entityManager);
 
             if (!"GET".equalsIgnoreCase(ctx.getMethod())) {
