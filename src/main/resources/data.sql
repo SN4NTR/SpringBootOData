@@ -10,5 +10,5 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (first_name, last_name, created_at, is_deleted, role) VALUES
-    ('Admin', 'Admin', NOW(), false, 'ROLE_ADMIN'),
-    ('User', 'User', NOW(), false, 'ROLE_USER');
+    ('Admin', 'Admin', NOW(), false, 'ADMIN'),
+    ('User', 'User', NOW(), false, 'USER');
