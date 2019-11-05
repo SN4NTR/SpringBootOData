@@ -39,6 +39,8 @@ git clone https://github.com/SN4NTR/SpringBootOData
 ./mvnw spring-boot:run
 ```
 
+* Open URL `localhost`:`port`/`odata/Users`
+
 SAP Cloud Foundry Deployment
 ---
 
@@ -89,3 +91,5 @@ cf target -o ORGANIZATION -s SPACE
 ```
 cf push
 ```
+
+* Open URL `app_name`.`domain_region`/`odata/Users`
