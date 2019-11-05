@@ -5,10 +5,10 @@ CREATE TABLE users (
     first_name VARCHAR (255) NOT NULL,
     last_name VARCHAR (255) NOT NULL,
     created_at DATE NOT NULL,
-    is_deleted BOOLEAN NOT NULL,
+    deleted BOOLEAN NOT NULL,
     role VARCHAR (255) NOT NULL
 );
 
-INSERT INTO users (first_name, last_name, created_at, is_deleted, role) VALUES
+INSERT INTO users (first_name, last_name, created_at, deleted, role) VALUES
     ('Admin', 'Admin', NOW(), false, 'ADMIN'),
     ('User', 'User', NOW(), false, 'USER');

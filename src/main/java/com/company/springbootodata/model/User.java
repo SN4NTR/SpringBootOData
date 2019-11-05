@@ -38,6 +38,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Column(name = "is_deleted")
+    @Column
     private boolean deleted;
 }
