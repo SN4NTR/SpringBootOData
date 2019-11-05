@@ -6,3 +6,6 @@ applications:
     service: hana_db
     env:
       SPRING_PROFILES_ACTIVE: cloud
+      URL: ${vcap.services.hana_db.credentials.url}
+      USER: ${vcap.services.hana_db.credentials.user}
+      PASSWORD: ${vcap.services.hana_db.credentials.password}
