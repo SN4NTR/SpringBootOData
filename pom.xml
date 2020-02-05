@@ -18,7 +18,6 @@
         <java.version>1.8</java.version>
         <olingo.version>2.0.11</olingo.version>
         <sap.cloud.db.version>2.4.64</sap.cloud.db.version>
-        <sap.hana.cloud>1.0.4.RELEASE</sap.hana.cloud>
     </properties>
 
     <dependencies>
@@ -47,11 +46,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sap.hana.cloud</groupId>
-            <artifactId>spring-cloud-cloudfoundry-hana-service-connector</artifactId>
-            <version>${sap.hana.cloud}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

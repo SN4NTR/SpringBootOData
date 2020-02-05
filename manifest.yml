@@ -2,10 +2,3 @@ applications:
   - name: spring-boot-odata
     memory: 1024M
     path: target/springbootodata-0.0.1-SNAPSHOT.jar
-    buildpack: java_buildpack
-    service: hana_db
-    env:
-      SPRING_PROFILES_ACTIVE: cloud
-      URL: ${vcap.services.hana_db.credentials.url}
-      USER: ${vcap.services.hana_db.credentials.user}
-      PASSWORD: ${vcap.services.hana_db.credentials.password}

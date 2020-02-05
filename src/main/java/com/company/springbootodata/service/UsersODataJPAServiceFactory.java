@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class UsersODataJPAServiceFactory extends ODataJPAServiceFactory {
 
+    private static final String PERSISTENCE_UNIT_NAME = "default";
+
     public UsersODataJPAServiceFactory() {
         setDetailErrors(true);
     }
@@ -25,7 +27,7 @@ public class UsersODataJPAServiceFactory extends ODataJPAServiceFactory {
         EntityManager entityManager = (EntityManager) request.getAttribute(EntityManagerFilter.getEM_REQUEST_ATTRIBUTE());
 
         jpaContext.setEntityManager(new EntityManagerWrapper(entityManager));
-        jpaContext.setPersistenceUnitName("default");
+        jpaContext.setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
         jpaContext.setContainerManaged(true);
 
         return jpaContext;
