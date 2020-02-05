@@ -1,5 +1,8 @@
 package com.company.springbootodata.service;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,13 +20,10 @@ import javax.persistence.metamodel.Metamodel;
 import java.util.List;
 import java.util.Map;
 
+@AllArgsConstructor(onConstructor_ = @Autowired)
 public class EntityManagerWrapper implements EntityManager {
 
     private EntityManager entityManager;
-
-    EntityManagerWrapper(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     @Override
     public void persist(Object entity) {
